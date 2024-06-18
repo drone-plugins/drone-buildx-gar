@@ -27,7 +27,7 @@ volumes:
 
 trigger:
   ref:
-    - refs/heads/master
+    - refs/heads/main
     - "refs/tags/**"
     - "refs/pull/**"
 
