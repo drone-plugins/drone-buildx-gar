@@ -8,13 +8,13 @@ require (
 	github.com/drone-plugins/drone-buildx v1.1.24
 	github.com/joho/godotenv v1.5.1
 	github.com/sirupsen/logrus v1.9.0
-	golang.org/x/oauth2 v0.13.0
+	golang.org/x/oauth2 v0.24.0
 	google.golang.org/api v0.151.0
 )
 
 require (
 	cloud.google.com/go/compute v1.23.1 // indirect
-	cloud.google.com/go/compute/metadata v0.2.3 // indirect
+	cloud.google.com/go/compute/metadata v0.3.0 // indirect
 	github.com/coreos/go-semver v0.3.0 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
 	github.com/drone-plugins/drone-plugin-lib v0.4.2 // indirect
