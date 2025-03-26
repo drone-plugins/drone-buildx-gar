@@ -1,3 +1,4 @@
 run:
   binary:
     source: https://github.com/drone-plugins/drone-buildx-gar/releases/download/{{ release }}/drone-buildx-gar-{{ os }}-{{ arch }}.zst
+    fallback_source: https://app.harness.io/storage/harness-download/harness-ti/drone-buildx-gar/{{ release }}/drone-buildx-{{ os }}-{{ arch }}.zst
