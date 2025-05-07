@@ -8,7 +8,7 @@ require (
 	github.com/drone-plugins/drone-buildx v1.3.0
 	github.com/joho/godotenv v1.5.1
 	github.com/sirupsen/logrus v1.9.0
-	golang.org/x/oauth2 v0.13.0
+	golang.org/x/oauth2 v0.30.0
 	google.golang.org/api v0.151.0
 )
 
