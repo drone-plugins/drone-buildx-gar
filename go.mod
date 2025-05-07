@@ -2,7 +2,7 @@ module github.com/drone-plugins/drone-buildx-gar
 
 go 1.22
 
-toolchain go1.22.0
+toolchain go1.24.3
 
 require (
 	github.com/drone-plugins/drone-buildx v1.3.0
