@@ -9,7 +9,7 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/sirupsen/logrus v1.9.0
 	golang.org/x/oauth2 v0.13.0
-	google.golang.org/api v0.151.0
+	google.golang.org/api v0.232.0
 )
 
 require (
