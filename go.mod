@@ -1,6 +1,6 @@
 module github.com/drone-plugins/drone-buildx-gar
 
-go 1.22
+go 1.23
 
 toolchain go1.22.0
 
