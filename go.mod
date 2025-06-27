@@ -1,11 +1,11 @@
 module github.com/drone-plugins/drone-buildx-gar
 
-go 1.23
+go 1.23.0
 
-toolchain go1.22.0
+toolchain go1.24.2
 
 require (
-	github.com/drone-plugins/drone-buildx v1.3.1
+	github.com/drone-plugins/drone-buildx v1.3.2
 	github.com/joho/godotenv v1.5.1
 	github.com/sirupsen/logrus v1.9.0
 	golang.org/x/oauth2 v0.13.0
@@ -31,7 +31,7 @@ require (
 	go.opencensus.io v0.24.0 // indirect
 	golang.org/x/crypto v0.14.0 // indirect
 	golang.org/x/net v0.17.0 // indirect
-	golang.org/x/sys v0.13.0 // indirect
+	golang.org/x/sys v0.30.0 // indirect
 	golang.org/x/text v0.13.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20231030173426-d783a09b4405 // indirect
