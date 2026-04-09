@@ -51,7 +51,7 @@ steps:
     commands:
       - go build -o release/windows/amd64/buildx-gar.exe ./cmd/drone-buildx-gar
   - name: build gar plugin
-    image: plugins/docker:20.17.4-windows-1809-amd64
+    image: plugins/docker:20.18.8-windows-1809-amd64
     settings:
       dockerfile: docker/gar/Dockerfile.windows.amd64.1809
       repo: plugins/buildx-gar
