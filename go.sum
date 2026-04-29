@@ -18,6 +18,8 @@ github.com/drone-plugins/drone-buildx v1.3.15 h1:yC7TPybKsOmkTKZGpnRKoD8x5WGNSoZ
 github.com/drone-plugins/drone-buildx v1.3.15/go.mod h1:6eZFsU2bAsY1GAmpw4vQODk/6VIyC+UdbArbALPUHJw=
 github.com/drone-plugins/drone-buildx v1.3.16 h1:SwTLl5s86arm27RIJXYGwV+eFhGzgnE/vveuTdP/6sQ=
 github.com/drone-plugins/drone-buildx v1.3.16/go.mod h1:6eZFsU2bAsY1GAmpw4vQODk/6VIyC+UdbArbALPUHJw=
+github.com/drone-plugins/drone-buildx v1.3.17 h1:KXWovDJ59ZaeHyZ3mrqSxM3wQ5X5ltSJTMGQ7Gaeej8=
+github.com/drone-plugins/drone-buildx v1.3.17/go.mod h1:MbPN45ES9bvQIO8NP7liagrZy5y+Oz0GLNgp6Se6Kf8=
 github.com/drone-plugins/drone-plugin-lib v0.4.2 h1:EiJ3Kco6ypP5noBQqVt1bBbuO1eUAumtPvLTX/NVAYg=
 github.com/drone-plugins/drone-plugin-lib v0.4.2/go.mod h1:KwCu92jFjHV3xv2hu5Qg/8zBNvGwbhoJDQw/EwnTvoM=
 github.com/drone/drone-go v1.7.1 h1:ZX+3Rs8YHUSUQ5mkuMLmm1zr1ttiiE2YGNxF3AnyDKw=
