@@ -814,7 +814,7 @@ pipeline:
                           # windows
                           GOOS=windows
 
-                          go build -o release/windows/amd64/buildx-gar.exe ./cmd/drone-buildx-gar
+                          go build -buildvcs=false -o release/windows/amd64/buildx-gar.exe ./cmd/drone-buildx-gar
                   - step:
                       type: Plugin
                       name: RF Build and Push on Tag
