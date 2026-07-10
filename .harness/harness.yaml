@@ -916,6 +916,12 @@ pipeline:
                       when:
                         stageStatus: Success
                         condition: <+codebase.build.type> == "tag"
+            variables:
+              - name: DRONE_REPO_OWNER
+                type: String
+                description: ""
+                required: false
+                value: drone-plugins
     - stage:
         name: Manifest and Release
         identifier: ManifestandRelease
