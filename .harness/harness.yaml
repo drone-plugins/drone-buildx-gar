@@ -854,6 +854,68 @@ pipeline:
                 description: ""
                 required: false
                 value: drone-plugins
+        - stage:
+            name: win-ltsc2025
+            identifier: winltsc2025
+            description: ""
+            type: CI
+            spec:
+              cloneCodebase: true
+              caching:
+                enabled: false
+                override: false
+                paths: []
+              buildIntelligence:
+                enabled: false
+              infrastructure:
+                type: VM
+                spec:
+                  type: Pool
+                  spec:
+                    poolName: windows-2025
+                    os: Windows
+              execution:
+                steps:
+                  - step:
+                      type: Run
+                      name: Build Binaries
+                      identifier: Build_Binaries
+                      spec:
+                        connectorRef: Plugins_Docker_Hub_Connector
+                        image: golang:1.26
+                        shell: Sh
+                        command: |-
+                          # force go modules
+                          export GOPATH=""
+
+                          # disable cgo
+                          export CGO_ENABLED=0
+
+                          set -e
+                          set -x
+
+                          # windows
+                          GOOS=windows
+
+                          go build -buildvcs=false -o release/windows/amd64/buildx-gar.exe ./cmd/drone-buildx-gar
+                  - step:
+                      type: Plugin
+                      name: Build and Push on TAG
+                      identifier: Build_and_Push_on_TAG
+                      spec:
+                        connectorRef: Plugins_Docker_Hub_Connector
+                        image: plugins/docker:21.3.0
+                        settings:
+                          username: drone
+                          password: <+secrets.getValue("Plugins_Docker_Hub_Pat")>
+                          repo: plugins/buildx-gar
+                          dockerfile: docker/gar/Dockerfile.windows.amd64.ltsc2025
+                          auto_tag: "true"
+                          auto_tag_suffix: windows-ltsc2025-amd64
+                          purge: "false"
+                      when:
+                        stageStatus: Success
+                        condition: <+codebase.build.type> == "tag"
     - stage:
         name: Manifest and Release
         identifier: ManifestandRelease
