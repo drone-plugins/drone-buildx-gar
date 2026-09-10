@@ -5,7 +5,7 @@ go 1.26
 require (
 	github.com/drone-plugins/drone-buildx v1.3.26
 	github.com/joho/godotenv v1.5.1
-	github.com/sirupsen/logrus v1.9.4
+	github.com/sirupsen/logrus v1.10.2
 	golang.org/x/oauth2 v0.36.0
 	google.golang.org/api v0.273.0
 )
