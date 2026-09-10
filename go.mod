@@ -1,12 +1,12 @@
 module github.com/drone-plugins/drone-buildx-gar
 
-go 1.26
+go 1.26.0
 
 require (
 	github.com/drone-plugins/drone-buildx v1.3.26
 	github.com/joho/godotenv v1.5.1
 	github.com/sirupsen/logrus v1.9.4
-	golang.org/x/oauth2 v0.36.0
+	golang.org/x/oauth2 v0.37.0
 	google.golang.org/api v0.273.0
 )
 
