@@ -34,7 +34,7 @@ pipeline:
                   identifier: Vet
                   spec:
                     connectorRef: Plugins_Docker_Hub_Connector
-                    image: golang:1.26
+                    image: harness0.harness.io/oci/docker_artifacts/hhi/go:1.26.10
                     shell: Sh
                     command: go vet ./...
         variables:
@@ -62,7 +62,7 @@ pipeline:
                       identifier: Build
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.23.0
+                        image: golang:1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -152,7 +152,7 @@ pipeline:
                       identifier: Build
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26
+                        image: golang:1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -231,7 +231,7 @@ pipeline:
                       identifier: Build_Push
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26
+                        image: harness0.harness.io/oci/docker_artifacts/hhi/go:1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -256,7 +256,7 @@ pipeline:
                       identifier: Build_Tag
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26
+                        image: harness0.harness.io/oci/docker_artifacts/hhi/go:1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -338,7 +338,7 @@ pipeline:
                       identifier: Build_Push
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26
+                        image: harness0.harness.io/oci/docker_artifacts/hhi/go:1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -363,7 +363,7 @@ pipeline:
                       identifier: Build_Tag
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26
+                        image: harness0.harness.io/oci/docker_artifacts/hhi/go:1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -456,7 +456,7 @@ pipeline:
                       identifier: Build_Push
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26
+                        image: harness0.harness.io/oci/docker_artifacts/hhi/go:1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -481,7 +481,7 @@ pipeline:
                       identifier: Build_Tag
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26
+                        image: harness0.harness.io/oci/docker_artifacts/hhi/go:1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -579,7 +579,7 @@ pipeline:
                       identifier: Build_Push
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26
+                        image: harness0.harness.io/oci/docker_artifacts/hhi/go:1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -604,7 +604,7 @@ pipeline:
                       identifier: Build_Tag
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26
+                        image: harness0.harness.io/oci/docker_artifacts/hhi/go:1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -703,7 +703,7 @@ pipeline:
                       identifier: Build
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.23.0
+                        image: golang:1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -797,7 +797,7 @@ pipeline:
                       identifier: Build
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26
+                        image: golang:1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -880,7 +880,7 @@ pipeline:
                       identifier: Build_Binaries
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26
+                        image: golang:1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -972,7 +972,7 @@ pipeline:
                       identifier: Build
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26
+                        image: golang:1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -1090,21 +1090,31 @@ pipeline:
                     condition: <+codebase.build.type> == "branch" || <+codebase.build.type> == "tag"
               - step:
                   type: Run
+                  name: Prepare patched Go SDK
+                  identifier: Build_GoSDK
+                  spec:
+                    image: harness0.harness.io/oci/docker_artifacts/hhi/go:1.26.10
+                    shell: Sh
+                    command: mkdir -p .hhi-go-toolchain && cp -a /usr/lib/go/. .hhi-go-toolchain/
+                    connectorRef: Plugins_Docker_Hub_Connector
+              - step:
+                  type: Run
                   name: Build release binaries
                   identifier: Build
                   spec:
                     connectorRef: Plugins_Docker_Hub_Connector
-                    image: golang:1.26
+                    image: harness0.harness.io/oci/docker_artifacts/hhi/harnessos-alpine:1
                     shell: Sh
                     command: |-
+                      export PATH="$PWD/.hhi-go-toolchain/bin:$PATH" GOPATH=/go GOTOOLCHAIN=local
                       GOOS=linux   GOARCH=amd64   go build -ldflags "-s -w" -a -tags netgo -o release/drone-buildx-gar-linux-amd64 ./cmd/drone-buildx-gar
                       GOOS=linux   GOARCH=arm64   go build -ldflags "-s -w" -a -tags netgo -o release/drone-buildx-gar-linux-arm64 ./cmd/drone-buildx-gar
                       GOOS=darwin  GOARCH=amd64   go build -ldflags "-s -w" -a -tags netgo -o release/drone-buildx-gar-darwin-amd64 ./cmd/drone-buildx-gar
                       GOOS=darwin  GOARCH=arm64   go build -ldflags "-s -w" -a -tags netgo -o release/drone-buildx-gar-darwin-arm64 ./cmd/drone-buildx-gar
                       GOOS=windows GOARCH=amd64   go build -ldflags "-s -w" -a -tags netgo -o release/drone-buildx-gar-windows-amd64 ./cmd/drone-buildx-gar
 
-                      apt-get update -y
-                      apt-get install -y zstd
+                      apk update
+                      apk add --no-cache zstd
 
                       zstd release/drone-buildx-gar-linux-amd64
                       zstd release/drone-buildx-gar-linux-arm64
