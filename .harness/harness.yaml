@@ -66,7 +66,7 @@ pipeline:
                       identifier: Build
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26.10
+                        image: golang:1.23.0
                         shell: Sh
                         command: |-
                           # force go modules
@@ -83,7 +83,7 @@ pipeline:
 
                           go build -buildvcs=false -o release/windows/amd64/buildx-gar.exe ./cmd/drone-buildx-gar
                         envVariables:
-                          GOTOOLCHAIN: go1.26.0
+                          GOTOOLCHAIN: go1.26.10
                   - step:
                       type: Plugin
                       name: BuildAndPushDockerPlugin
@@ -156,7 +156,9 @@ pipeline:
                       identifier: Build
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26.10
+                        image: golang:1.26
+                        envVariables:
+                          GOTOOLCHAIN: go1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -715,7 +717,7 @@ pipeline:
                       identifier: Build
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26.10
+                        image: golang:1.23.0
                         shell: Sh
                         command: |-
                           # force go modules
@@ -732,7 +734,7 @@ pipeline:
 
                           go build -buildvcs=false -o release/windows/amd64/buildx-gar.exe ./cmd/drone-buildx-gar
                         envVariables:
-                          GOTOOLCHAIN: go1.26.0
+                          GOTOOLCHAIN: go1.26.10
                   - step:
                       type: Plugin
                       name: RF Build and Push on Tag
@@ -809,7 +811,9 @@ pipeline:
                       identifier: Build
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26.10
+                        image: golang:1.26
+                        envVariables:
+                          GOTOOLCHAIN: go1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -892,7 +896,9 @@ pipeline:
                       identifier: Build_Binaries
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26.10
+                        image: golang:1.26
+                        envVariables:
+                          GOTOOLCHAIN: go1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
@@ -984,7 +990,9 @@ pipeline:
                       identifier: Build
                       spec:
                         connectorRef: Plugins_Docker_Hub_Connector
-                        image: golang:1.26.10
+                        image: golang:1.26
+                        envVariables:
+                          GOTOOLCHAIN: go1.26.10
                         shell: Sh
                         command: |-
                           # force go modules
