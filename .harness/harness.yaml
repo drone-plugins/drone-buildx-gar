@@ -958,13 +958,6 @@ pipeline:
                 paths: []
               buildIntelligence:
                 enabled: false
-              infrastructure:
-                type: VM
-                spec:
-                  type: Pool
-                  spec:
-                    poolName: windows-2025
-                    os: Windows
               execution:
                 steps:
                   - step:
@@ -1032,6 +1025,12 @@ pipeline:
                       when:
                         stageStatus: Success
                         condition: <+codebase.build.type> == "branch"
+              platform:
+                os: Windows
+                arch: Amd64
+              runtime:
+                type: Cloud
+                spec: {}
             variables:
               - name: DRONE_REPO_OWNER
                 type: String
