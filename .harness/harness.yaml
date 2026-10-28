@@ -1108,7 +1108,9 @@ pipeline:
                 arch: Amd64
               runtime:
                 type: Cloud
-                spec: {}
+                spec:
+                  imageSpec:
+                    imageName: windows-2025
             variables:
               - name: DRONE_REPO_OWNER
                 type: String
