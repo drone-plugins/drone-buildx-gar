@@ -1,5 +1,5 @@
 # escape=`
-FROM plugins/buildx:1.3.34
+FROM plugins/buildx:1.3.35
 
 LABEL maintainer="Drone.IO Community <drone-dev@googlegroups.com>" `
   org.label-schema.name="Drone GAR" `
